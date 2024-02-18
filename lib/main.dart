@@ -1,15 +1,21 @@
 import 'package:flutter/cupertino.dart';
-void main(){
+import 'package:flutter/material.dart';
+import 'package:notes_app/views/notes_view.dart';
+
+void main() {
   runApp(const NotesApp());
 }
-class NotesApp extends StatelessWidget{
+
+class NotesApp extends StatelessWidget {
   const NotesApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-
-    return Container(
-
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme:
+          ThemeData(brightness: Brightness.dark,),
+      home:NotesView(),
     );
   }
 }
