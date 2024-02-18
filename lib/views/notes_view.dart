@@ -1,11 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class NotesView extends StatelessWidget{
+import '../widgets/nodes_view_body.dart';
+
+class NotesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-   return const Scaffold(
-   );
-  }
+    return
+     const Scaffold(
+        body:
+        NotesViewBody(),
 
+
+    );
+  }
 }
+
