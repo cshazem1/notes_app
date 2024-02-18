@@ -13,12 +13,12 @@ class CustomTextField extends StatelessWidget {
   bool? onClick;
   Icon? icon;
   bool? enable;
-  double? height;
+  int? maxLine;
   CustomTextField(
       {super.key,
       required this.onSubmitted,
       this.initialText,
-      this.height,
+      this.maxLine,
       this.enable,
       this.icon,
       this.hintText,
@@ -31,6 +31,7 @@ class CustomTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextField(
+        maxLines:maxLine ,
         enabled: enable,
         onSubmitted: onSubmitted,
         onChanged: onChange,
