@@ -16,12 +16,12 @@ class EditNoteViewBody extends StatelessWidget{
 
           }, onChange: (p0) {
 
-          },hintText: "Title",labelText: "Enter Your Title",),
+          },hintText:"Enter Your Title",labelText: "Title" ,),
         CustomTextField(onSubmitted: (p0) {
 
         }, onChange: (p0) {
 
-        },hintText: "Description",labelText: "Enter Your Description",maxLine: 5),
+        },hintText:"Enter Your Description" ,labelText:"Description" ,maxLine: 5),
 
         ],
       ),
