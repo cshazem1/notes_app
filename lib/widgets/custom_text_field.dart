@@ -5,16 +5,18 @@ import 'package:notes_app/constants.dart';
 
 // ignore: must_be_immutable
 class CustomTextField extends StatelessWidget {
-  Function(String) onChange;
-  Function(String) onSubmitted;
-  String? initialText;
-  String? hintText;
-  String? labelText;
-  bool? onClick;
-  Icon? icon;
-  bool? enable;
-  int? maxLine;
-  CustomTextField(
+  final Function(String) onChange;
+  final Function(String) onSubmitted;
+  final String? initialText;
+  final String? hintText;
+  final String? labelText;
+  final bool? onClick;
+  final Icon? icon;
+  final bool? enable;
+  final int? maxLine;
+  final bool onView = true;
+
+  const CustomTextField(
       {super.key,
       required this.onSubmitted,
       this.initialText,
@@ -25,7 +27,6 @@ class CustomTextField extends StatelessWidget {
       this.labelText,
       required this.onChange,
       this.onClick});
-  bool onView = true;
   @override
   Widget build(BuildContext context) {
     return Padding(

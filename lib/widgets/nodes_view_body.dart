@@ -5,11 +5,11 @@ class NotesViewBody extends StatelessWidget {
   const NotesViewBody({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Padding(
+    return  const Padding(
       padding: EdgeInsets.symmetric(horizontal:24),
       child: Column(
         children: [
-          CustomAppBar(),
+          CustomAppBar(icon: Icon(Icons.search),appBarName: "Notes"),
           Expanded(
             child: NotesListView(),
           )
