@@ -11,7 +11,7 @@ class EditNoteViewBody extends StatelessWidget{
       padding: const EdgeInsets.symmetric(horizontal:24),
       child: Column(
         children: [const CustomAppBar(icon: Icon(Icons.check),appBarName: "Edit Note"
-            ,),SizedBox(height: 50,),
+            ,),const SizedBox(height: 50,),
           CustomTextField(onSubmitted: (p0) {
 
           }, onChange: (p0) {

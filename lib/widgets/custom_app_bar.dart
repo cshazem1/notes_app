@@ -18,7 +18,7 @@ final Icon? icon;
         children:  [
 
            Text(appBarName??"",
-              style: TextStyle(
+              style: const TextStyle(
 
                 fontSize: 35,
               )),
