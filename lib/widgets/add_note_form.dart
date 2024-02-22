@@ -2,17 +2,16 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_state.dart';
 import 'package:notes_app/models/note_model.dart';
-
 import '../constants.dart';
 import 'custom_button.dart';
 import 'custom_text_field.dart';
 
 class AddNoteForm extends StatefulWidget {
-  const AddNoteForm({super.key
-  });
+  const AddNoteForm({super.key});
   @override
   State<AddNoteForm> createState() => _AddNoteFormState();
 }
@@ -55,27 +54,35 @@ class _AddNoteFormState extends State<AddNoteForm> {
           const SizedBox(
             height: 20,
           ),
-          
           BlocBuilder<AddNoteCubit, AddNotesState>(
-  builder: (context, state) {
+            builder: (context, state) {
+              return CustomButton(
+                isLoading: state is AddNotesLoading ? true : false,
+                text: "Add",
+                onClick: () {
+                  if (globalKey.currentState!.validate()) {
+                    {
+                      var currentDate = DateTime.now();
+                      var formatCurrentDate =
+                          DateFormat.yMd().format(currentDate);
+                      globalKey.currentState!.save();
+                      BlocProvider.of<AddNoteCubit>(context).addNote(NoteModel(
+                          title: title!,
+                          description: description!,
+                          color: Colors.blue.value,
+                          date: formatCurrentDate.toString()));
 
-    return CustomButton(
-isLoading: state is AddNotesLoading?true:false,
-            text: "Add",
-            onClick: () {
-              if (globalKey.currentState!.validate()) {
-                { globalKey.currentState!.save();
-                  BlocProvider.of<AddNoteCubit>(context).addNote(NoteModel(title: title!, description: description!, color:  Colors.blue.value, date:TimeOfDay.now().toString()));
-                }
-              } else {
-                autoValidateMode = AutovalidateMode.always;
-                setState(() {});
-              }
+
+                    }
+                  } else {
+                    autoValidateMode = AutovalidateMode.always;
+                    setState(() {});
+                  }
+                },
+                color: kPrimaryColor,
+              );
             },
-            color: kPrimaryColor,
-          );
-  },
-)
+          )
         ],
       ),
     );
