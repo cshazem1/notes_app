@@ -8,10 +8,13 @@ debugPrint("change: $change");  }
 
   @override
   void onClose(BlocBase bloc) {
-  }
+    debugPrint("onClose: $bloc");  }
+
+
 
   @override
   void onCreate(BlocBase bloc) {
+    debugPrint("onCreate: $bloc");
   }
 
   @override
