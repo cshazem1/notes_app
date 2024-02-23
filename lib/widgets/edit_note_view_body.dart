@@ -1,31 +1,67 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/custom_app_bar.dart';
 import 'package:notes_app/widgets/custom_text_field.dart';
 
-class EditNoteViewBody extends StatelessWidget{
-  const EditNoteViewBody({super.key});
+class EditNoteViewBody extends StatefulWidget {
+  const EditNoteViewBody({super.key, required this.noteModel});
+  final NoteModel noteModel;
+  @override
+  State<EditNoteViewBody> createState() => _EditNoteViewBodyState();
+}
+
+class _EditNoteViewBodyState extends State<EditNoteViewBody> {
+  String? title;
+  String? desc;
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-      padding: const EdgeInsets.symmetric(horizontal:24),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
-        children: [const CustomAppBar(icon: Icon(Icons.check),appBarName: "Edit Note"
-            ,),const SizedBox(height: 50,),
-          CustomTextField(onSubmitted: (p0) {
+        children: [
+           CustomAppBar(
+callback: () {
+   widget.noteModel.title=title??widget.noteModel.title;
+   widget.noteModel.description=desc??widget.noteModel.description;
+   widget.noteModel.save();
+   BlocProvider.of<NotesCubit>(context).fetchNotes();
+   Navigator.pop(context);
 
-          }, onChange: (p0) {
+},
+            icon: const Icon(Icons.check),
+            appBarName: "Edit Note",
+          ),
+          const SizedBox(
+            height: 50,
+          ),
+          CustomTextField(
+            onSubmitted: (data) {
+              title = data;
+            },
+            onChange: (data) {
+              title = data;
 
-          },hintText:"Enter Your Title",labelText: "Title" ,),
-        CustomTextField(onSubmitted: (p0) {
+            },
+            hintText: widget.noteModel.title,
+            labelText: "Title",
+          ),
+          CustomTextField(
+              onSubmitted: (data) {
+                desc = data;
+              },
+              onChange: (data) {
+                desc = data;
 
-        }, onChange: (p0) {
-
-        },hintText:"Enter Your Description" ,labelText:"Description" ,maxLine: 5),
-
+              },
+              hintText: widget.noteModel.description,
+              labelText: "Description",
+              maxLine: 5),
         ],
       ),
     );
   }
-
 }

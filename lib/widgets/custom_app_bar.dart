@@ -5,8 +5,8 @@ import 'custom_search_icon.dart';
 class CustomAppBar extends StatelessWidget {
 final  String? appBarName;
 final Icon? icon;
-
-   const CustomAppBar({ this.appBarName,this.icon,super.key});
+ const CustomAppBar({ this.appBarName,this.icon,required this.callback,super.key});
+final VoidCallback callback;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,9 @@ final Icon? icon;
 
                 fontSize: 35,
               )),
-          CustomSearchIcon(icon: icon)
+          GestureDetector(
+              onTap: callback,
+              child: CustomSearchIcon(icon: icon))
         ],
       ),
     );
