@@ -7,6 +7,7 @@ import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_state.dart';
 import 'package:notes_app/models/note_model.dart';
 import '../constants.dart';
+import 'custom_color_picker.dart';
 import 'custom_button.dart';
 import 'custom_text_field.dart';
 
@@ -20,6 +21,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
   AutovalidateMode? autoValidateMode = AutovalidateMode.disabled;
   String? title;
   String? description;
+  int? color;
   final GlobalKey<FormState> globalKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
@@ -51,6 +53,17 @@ class _AddNoteFormState extends State<AddNoteForm> {
             },
             onChange: (p0) {},
           ),
+
+          const SizedBox(
+            height: 20,
+          ),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [ColorPickerPage(colorX: (data) {
+
+           color=data.value;
+          log(color.toString());
+          },)]),
           const SizedBox(
             height: 20,
           ),
@@ -69,7 +82,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                       BlocProvider.of<AddNoteCubit>(context).addNote(NoteModel(
                           title: title!,
                           description: description!,
-                          color: Colors.blue.value,
+                          color: color??Colors.blue.value,
                           date: formatCurrentDate.toString()));
 
 
