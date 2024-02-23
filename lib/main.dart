@@ -4,7 +4,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:notes_app/simple_bloc_observer.dart';
 import 'package:notes_app/views/edit_note_view.dart';
 import 'package:notes_app/views/notes_view.dart';
-import 'package:notes_app/widgets/color_pikerdart';
+import 'package:notes_app/widgets/custom_color_picker.dart';
 
 import 'constants.dart';
 import 'cubits/notes_cubit/notes_cubit.dart';
@@ -30,7 +30,7 @@ class NotesApp extends StatelessWidget {
         routes: {
           NotesView.id: (context) => const NotesView(),
           EditNoteView.id: (context) => const EditNoteView(),
-          ColorPickerPage.id: (context) =>  ColorPickerPage(),
+          ColorPickerPage.id: (context) =>  const ColorPickerPage(),
 
 
         },
