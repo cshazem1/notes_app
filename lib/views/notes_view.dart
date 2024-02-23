@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../widgets/add_note_bottom_sheet.dart';
 import '../widgets/nodes_view_body.dart';
 
@@ -14,7 +13,6 @@ class NotesView extends StatefulWidget {
 }
 
 class _NotesViewState extends State<NotesView> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,11 +33,10 @@ class _NotesViewState extends State<NotesView> {
         tooltip: "add",
         splashColor: Colors.orange,
         shape:
-        ContinuousRectangleBorder(borderRadius: BorderRadius.circular(100)),
+            ContinuousRectangleBorder(borderRadius: BorderRadius.circular(100)),
         child: const Icon(Icons.add),
       ),
       body: const NotesViewBody(),
     );
   }
 }
-

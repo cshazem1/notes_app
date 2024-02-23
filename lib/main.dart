@@ -5,7 +5,6 @@ import 'package:notes_app/simple_bloc_observer.dart';
 import 'package:notes_app/views/edit_note_view.dart';
 import 'package:notes_app/views/notes_view.dart';
 import 'package:notes_app/widgets/custom_color_picker.dart';
-
 import 'constants.dart';
 import 'cubits/notes_cubit/notes_cubit.dart';
 import 'models/note_model.dart';
@@ -15,7 +14,6 @@ void main() async {
   Hive.registerAdapter(NoteModelAdapter());
   await Hive.openBox<NoteModel>(kNotesName);
   Bloc.observer = SimpleBlocObserver();
-
   runApp(const NotesApp());
 }
 
@@ -24,19 +22,16 @@ class NotesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  BlocProvider(
+    return BlocProvider(
       create: (context) => NotesCubit(),
       child: MaterialApp(
         routes: {
           NotesView.id: (context) => const NotesView(),
           EditNoteView.id: (context) => const EditNoteView(),
-          ColorPickerPage.id: (context) =>  const ColorPickerPage(),
-
-
+          ColorPickerPage.id: (context) => const ColorPickerPage(),
         },
         debugShowCheckedModeBanner: false,
-        theme:
-        ThemeData(brightness: Brightness.dark, fontFamily: "Poppins"),
+        theme: ThemeData(brightness: Brightness.dark, fontFamily: "Poppins"),
         initialRoute: NotesView.id,
       ),
     );

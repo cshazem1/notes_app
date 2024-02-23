@@ -33,15 +33,13 @@ class CustomTextField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: TextFormField(
         validator: (value) {
-          if(value?.isEmpty??true) {
+          if (value?.isEmpty ?? true) {
             return "field is required";
-          }
-          else {
+          } else {
             return null;
           }
         },
-
-        maxLines:maxLine ,
+        maxLines: maxLine,
         enabled: enable,
         onSaved: onSubmitted,
         onChanged: onChange,
