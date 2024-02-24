@@ -11,7 +11,6 @@ class NotesView extends StatefulWidget {
   @override
   State<NotesView> createState() => _NotesViewState();
 }
-
 class _NotesViewState extends State<NotesView> {
   @override
   Widget build(BuildContext context) {
@@ -36,7 +35,7 @@ class _NotesViewState extends State<NotesView> {
             ContinuousRectangleBorder(borderRadius: BorderRadius.circular(100)),
         child: const Icon(Icons.add),
       ),
-      body: const NotesViewBody(),
+      body:  NotesViewBody(),
     );
   }
 }

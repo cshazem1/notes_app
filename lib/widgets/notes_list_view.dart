@@ -7,7 +7,6 @@ import 'note_item.dart';
 
 class NotesListView extends StatefulWidget {
   const NotesListView({super.key});
-
   @override
   State<NotesListView> createState() => _NotesListViewState();
 }

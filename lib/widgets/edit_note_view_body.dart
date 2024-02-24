@@ -28,7 +28,6 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
           children: [
             CustomAppBar(
               callback: () {
-
                 widget.noteModel.title = title ?? widget.noteModel.title;
                 widget.noteModel.description =
                     desc ?? widget.noteModel.description;
@@ -37,7 +36,6 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
                 BlocProvider.of<NotesCubit>(context).fetchNotes();
                 Navigator.pop(context);
                 buildAnimatedSnackBar("The note has been modified successfully").show(context);
-
               },
               icon: const Icon(Icons.check),
               appBarName: "Edit Note",

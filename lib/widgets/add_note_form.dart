@@ -17,7 +17,6 @@ class AddNoteForm extends StatefulWidget {
   @override
   State<AddNoteForm> createState() => _AddNoteFormState();
 }
-
 class _AddNoteFormState extends State<AddNoteForm> {
   AutovalidateMode? autoValidateMode = AutovalidateMode.disabled;
   String? title;
@@ -79,7 +78,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
                       buildAnimatedSnackBar("The note has been added successfully").show(context);
                       var currentDate = DateTime.now();
                       var formatCurrentDate =
-                          DateFormat.yMd().format(currentDate);
+                          DateFormat("yyyy-MM-dd hh:mm").format(currentDate);
                       globalKey.currentState!.save();
                       BlocProvider.of<AddNoteCubit>(context).addNote(NoteModel(
                           title: title!,

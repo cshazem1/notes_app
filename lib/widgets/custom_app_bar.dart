@@ -7,7 +7,7 @@ class CustomAppBar extends StatelessWidget {
   final Icon? icon;
   const CustomAppBar(
       {this.appBarName, this.icon, required this.callback, super.key});
-  final VoidCallback callback;
+  final Function() callback;
 
   @override
   Widget build(BuildContext context) {
